@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+//		promise有3种状态:pending(进行中),fulfilled(已成功),rejected(已失败).
+		
+//		p1 -> 一个异步操作,这里,这个异步操作是定时器.
+
+//		Promise的回调是同步操作，then的回调才是异步操作。
+//		Promise新建之后的2秒时间，p1都处于pending状态。
+//		本例代码是让p1在2000之后状态切换成fulfilled。
+
+		let p1 = new Promise(function(success,error){
+			setTimeout(function(){
+				success(1000)
+			},2000)
+		});
+		
+		p1.then(function(num){
+			console.log(num)
+		})
+				
+	</script>
+</html>

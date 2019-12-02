@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		
+	</body>
+	<script type="text/javascript">
+		
+//		如何把任何代码改成面试对象的形式.
+//		面向对象的三大特性:多态,继承,封装
+
+//		封装(抽象出问题本质):
+//			什么是类,什么是对象,什么是私有属性,什么是公有属性(方法).
+
+//		多个alert构成一个类,每个alert就是一个对象.
+//		每次弹的数字不一样,这些数字应该是3个alert各自的私有属性.
+//		3个alert的行为都一样:都会弹自己的私有属性.
+
+//		alert(100);
+//		alert(200);
+//		alert(300);
+		
+		function ShowNum(num){
+			this.num = num;
+		}
+		
+		ShowNum.prototype.fn = function(){
+			alert(this.num);
+		}
+		
+		let num1 = new ShowNum(100).fn();
+		let num2 = new ShowNum(200).fn();
+		let num3 = new ShowNum(300).fn();
+
+//		高射炮打蚊子 -> 大材小用
+		
+	</script>
+</html>

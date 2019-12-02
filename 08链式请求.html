@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+//		链式请求:第一次请求数据得到的结果,作为第二次请求的传递参数
+		
+//		let xhr = new XMLHttpRequest();
+//		xhr.open('GET','data.json');
+//		xhr.send();
+//		xhr.onreadystatechange = function(){
+//			if(xhr.readyState == 4){
+//				if(xhr.status == 200){
+//					let xhr1 = new XMLHttpRequest();
+//					//第一次请求得到的结果作为第二次请求的参数。
+//					xhr1.open('GET','count.json?name='+JSON.parse(xhr.responseText).name);
+//					xhr1.send();
+//					xhr1.onreadystatechange = function(){
+//						if(xhr1.readyState == 4){
+//							if(xhr1.status == 200){
+//								console.log(xhr1.responseText)
+//							}
+//						}
+//					}
+//				}
+//			}
+//		}
+
+		function getData(){
+			return new Promise(function(resolve){
+				let xhr = new XMLHttpRequest();
+				xhr.open('GET','data.json');
+				xhr.send();
+				xhr.onreadystatechange = function(){
+					if(xhr.readyState == 4){
+						if(xhr.status == 200){
+							resolve(xhr.responseText)
+						}
+					}
+				}
+			})
+		}
+		
+		function getCount(res){
+			return new Promise(function(){
+				let xhr = new XMLHttpRequest();
+				//第一次请求得到的结果作为第二次请求的参数。
+				xhr.open('GET','count.json?name='+JSON.parse(res).name);
+				xhr.send();
+				xhr.onreadystatechange = function(){
+					if(xhr1.readyState == 4){
+						if(xhr.status == 200){
+							console.log(xhr.responseText)
+						}
+					}
+				}
+			})
+		}
+		
+		//使用链式请求的promise写法. 
+		getData().then(function(res){
+			return getCount(res)
+		}).then(function(res){
+			console.log(res)
+		})
+		
+		
+	</script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+//		new Promise(function(resolve,reject){
+//			resolve(100)
+//		}).then(function(num){
+//			console.log(num)
+//		})
+
+//		then返回的是另一个promise对象。不是当前的p1.
+//		then后面还可以再接另一个then。实现一些链式的promise处理。
+
+//		let p1 = new Promise(function(resolve,reject){
+//			resolve(100)
+//		})
+//		
+//		let pp = p1.then(function(num){
+//			console.log(num)
+//		});
+//		
+//		console.log(pp == p1);//false
+
+//		then的回调return另一个promise对象，则这个then后面的then就是return的promise的resolve
+//		这里最后一个then必须等待5秒之后才会触发。
+
+		new Promise(function(resolve,reject){
+			setTimeout(function(){
+				resolve()
+			},2000)			
+		}).then(function(){
+			return new Promise(function(resolve){
+				setTimeout(function(){
+					resolve(200)
+				},3000)				
+			})
+		}).then(function(num){
+			console.log(num)
+		})
+		
+	</script>
+</html>

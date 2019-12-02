@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		//fetch的post请求。
+		
+		//fetch的第二个参数是配置对象。
+		//method -> 请求的方式
+		//headers -> 设置请求头
+		//body -> 请求正文,可以用于发生数据
+		//mode -> 是否允许跨域，设置cors就是允许cors跨域
+		
+		//去了公司写代码请求数据，这个过程99%都需要跨域。
+		
+		//因为本地的项目服务器域名默认是：localhost:XXXX
+		//但是接口文档上的请求url一般是：
+		//	https://www.baidu.com/dddd/ffff/eeeee.
+		//	https://192.168.4.181/dddd/ffff/eeeee.
+		//因此默认请求就是跨域请求.
+			
+//		fetch('data.json',{
+//			method:'POST',
+//			headers:{
+//				'Content-Type':'application/x-www-form-urlencoded',
+//				'Authorization':'token alsdjfhasjhdfjhdjfhrjhj2h3e4j2hjh23j'
+//			},
+//			body:'name=88&age=11&sex=nv',
+//			mode:'cors'
+//		}).then(function(res){
+//			return res.json()
+//		}).then(function(res){
+//			console.log(res.name)
+//		})
+
+//		怎么样算跨域?
+//			比较请求的源和当前页面的源.		
+//			协议,域名,ip,端口 -> 这些必须完全一致才不是跨域.
+
+//		let xhr = new XMLHttpRequest();
+//		xhr.open('GET','http://192.168.4.181:8020/1316%E6%9C%80%E5%90%8E%E4%B8%80%E5%A4%A9/data.json');
+//		xhr.send();
+//		
+//		xhr.onreadystatechange = function(){
+//			if(xhr.readyState == 4){
+//				console.log(888)
+//			}
+//		}
+		
+		
+	</script>
+</html>

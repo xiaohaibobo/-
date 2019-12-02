@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		//resolve就是then的形参。resolve调用,promise的状态就会切换成已成功。
+		//如果resolve的参数是另一个promise，这时当前promise的状态就受限于resolve的参数promise
+		
+		//例如，以下例子，p2的状态由p1的状态决定，p1的状态没有确定，p2的状态只能等待p1的状态确定
+		//这时，p2的resolve无效，因为p1的状态是reject。
+		
+		let x = 5,y = 10;
+		
+		let p1 = new Promise(function(resolve,reject){
+			setTimeout(function(){
+				reject(100)
+			},3000);			
+		})
+		
+		let p2 = new Promise(function(resolve,reject){
+			setTimeout(function(){
+				resolve(p1)
+			},1000)			
+		})
+		
+		p2.then(function(num){
+			x = x+y
+			console.log('对了')
+		}).catch(function(err){
+			x = x*y
+			console.log('错了')
+		})
+				
+		setTimeout(function(){
+			console.log(x+y);//60
+		},3000)
+		
+	</script>
+</html>

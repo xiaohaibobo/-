@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" id="btn" value="科比出来" />
+		<img id='img' src=""/>
+	</body>
+	<script type="text/javascript">
+		
+		let oImg = document.getElementById("img");
+		let oBtn = document.getElementById("btn");
+		
+		oBtn.onclick = function(){
+//			oImg.src = 'img/timg.jpg';			
+//			oImg.onload = function(){
+//				console.log(oImg.offsetWidth);
+//			}			
+			
+			new Promise(function(success){
+				oImg.src = 'img/timg.jpg';			
+				oImg.onload = function(){
+					success();
+				}
+			}).then(function(){
+				console.log(oImg.offsetWidth);
+			})
+		}
+		
+		
+	</script>
+</html>

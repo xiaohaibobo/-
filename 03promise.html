@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+
+//		promise用于封装异步操作。(把世界上所有的异步操作都封装成了一个promise类.每个异步操作都是一个promise对象)
+		
+		function MyPromise(fn){
+			this.then = fn;
+		}
+		
+		new MyPromise(function(success){
+			setTimeout(function(){
+				success();
+			},1000)
+		}).then(function(){
+			console.log(100)
+		})
+		
+		new MyPromise(function(success){
+			let xhr = new XMLHttpRequest();
+			xhr.open('GET','data.json');
+			xhr.send();		
+			xhr.onreadystatechange = function(){
+				if(xhr.readyState == 4){
+					if(xhr.status == 200){
+						success(xhr.responseText);
+					}
+				}
+			}
+		}).then(function(res){
+			console.log(res)
+		})
+				
+//		---------------------------------------------------------------------------------
+
+//		面向对象模拟封装所有的定时器。
+//		function MyPromise(fn){
+//			this.fn = fn;
+//		}
+//		
+//		MyPromise.prototype.then = function(){
+//			setTimeout(this.fn,1000)
+//		}
+//		
+//		new MyPromise(function(){
+//			console.log(100)
+//		}).then()
+//		
+//		new MyPromise(function(){
+//			alert(200)
+//		}).then()
+		
+//		---------------------------------------------------------------------------------------
+//		用promise写定时器
+
+//		setTimeout(function(){
+//			console.log(2000)
+//		},1000)
+		
+//		new Promise(function(success,error){
+//			setTimeout(function(){
+//				success(2000)
+//			},1000)
+//		}).then(function(res){
+//			console.log(res)
+//		})
+		
+	</script>
+</html>

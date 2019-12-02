@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div>div{
+				width: 200px;
+				height: 200px;
+				border:1px solid #000;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<input type="button" id='btn' value='变色' />
+			<div id='box'></div>
+		</div>
+		<div>
+			<input type="button" id='btn' value='变色' />
+			<div id='box'></div>
+		</div>
+		<div>
+			<input type="button" id='btn' value='变色' />
+			<div id='box'></div>
+		</div>		
+	</body>
+	<script type="text/javascript">
+		
+		//什么是类,什么是对象,什么是私有属性,什么是公有属性(方法).
+		
+		//一个按钮和其后面的div构成一个对象，多个组按钮和其后面的div构成一个类Ele
+		//每个Ele的实例的按钮，div，颜色各不相同，因此，按钮，div，颜色应该是私有属性
+		//共有方法：每个Ele实现都有相同的行为：点自己的按钮把自己的div变成自己的颜色。
+		
+		//把选项卡改成面向对象。
+		
+		function Ele(parentNode,color){
+			this.oBtn = parentNode.children[0];
+			this.oDiv = parentNode.children[1];
+			this.color = color;
+		}
+		
+		Ele.prototype.fn = function(){
+			this.oBtn.onclick = ()=>{
+				this.oDiv.style.background = this.color
+			}
+		}
+				
+		new Ele(document.body.children[0],'red').fn();
+		new Ele(document.body.children[1],'blue').fn();
+		new Ele(document.body.children[2],'green').fn();
+		
+		
+	</script>
+</html>

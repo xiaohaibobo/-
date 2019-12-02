@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+//		fetch -> 原生的请求服务器Api,作为XMLHttpRequest的一种替代方案
+//		fetch的第一个参数就是url
+//		第二个参数是可选的配置对象。
+
+//		fetch会返回一个本次请求的promise对象。
+//		可以在这个then内获取到原生底层的响应类。(实际上也有请求类)
+
+//		fetch('data.json').then(function(res){
+//
+//			res在这里就是底层的响应类.不是我们需要的实际数据.
+//			响应类包含header(响应头)和body(响应体)
+//
+//			console.dir(res);
+//			console.log(res.json());
+//
+//			获取响应体内的json数据.(会自动把字符串数据转换为json对象.如果可以)
+//			类似的还有：res.text()，res.xml().....
+//
+//			var resObj = res.json();
+//
+//			resObj又是一个promise对象，它的then的回调就可以拿到我们想要的数据。
+//			resObj.then(function(result){
+//				console.log(result)
+//				console.log(result.name)
+//			})
+//			
+//		})
+		
+//		利用promise的链式写法		
+//		fetch('data.json').then(function(res){
+//		 	return res.json();			
+//		}).then(function(result){
+//			console.log(result.name)
+//		})
+
+//		利用箭头函数的简写。
+		fetch('data.json')
+		.then((res)=>res.json())
+		.then((result)=>{
+			console.log(result.name)
+		})
+		
+	</script>
+</html>
